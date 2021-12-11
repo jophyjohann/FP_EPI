@@ -8,6 +8,7 @@ dataset_files = ["",
 								 "",
 								 "",
 								 ""]
+#end of automatically inserted dataset_files
 
 
 def datasets_change_comma_to_dot():
@@ -28,16 +29,21 @@ def insert_dataset_files(new_filenames):
 	for file in new_filenames:
 		filename_list += '"' + file + '",\n								 '
 	filename_list += ']'
+	filename_list.replace(",\n								 ]","]")
 
 	print(filename_list)
 
-	'''
 	file = open(this_file,"r")
 	data = file.read()
-	file = open(this_file,"w")
-	file.write(data.replace("#automatically inserted dataset_files:\ndataset_files=", "#automatically inserted dataset_files:\ndataset_files=" + filename_list))
+	#file = open(this_file,"w")
+	start_string = "#automatically inserted dataset_files:"
+	stop_string = "#end of automatically inserted dataset_files"
+	additional_string = "\ndataset_files = "
+	dataset_spot=data[data.find(start_string):data.find(stop_string)]
+
+	file.write(data.replace(dataset_spot, dataset_spot + additional_string + filename_list))
 	file.close()
-	'''
+	
 
 def create_dataset():
 	pass
@@ -49,5 +55,5 @@ def import_datasets():
 
 def start_insert():
 	os.chdir(folder_name)
-	for filename in glob.glob("*" + file_extension):
-		insert_dataset_files(filename + file_extension)
+	filenames = glob.glob("*" + file_extension)
+	insert_dataset_files(filenames)

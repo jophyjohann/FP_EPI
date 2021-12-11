@@ -3,7 +3,7 @@ from test import *
 
 def main():
 	#datasets_change_comma_to_dot()
-	start_insert
+	start_insert()
 	pass
 
 main()
