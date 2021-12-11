@@ -1,8 +1,8 @@
-Praktikumsgruppe;010
-Messbeginn;20211209-112029
-Mess-Variante;Messung mit Photodiode
-
-Spalt links
+#Praktikumsgruppe;010
+#Messbeginn;20211209-112029
+#Mess-Variante;Messung mit Photodiode
+#
+#Spalt links
 #;Spaltposition;Diodenspannung / V
 0.000;0.000;0.007
 1.000;0.050;0.010

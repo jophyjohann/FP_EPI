@@ -1,8 +1,8 @@
-Praktikumsgruppe;010
-Messbeginn;20211209-115826
-Mess-Variante;Messung mit Photomultiplier
-
-Doppelspalt
+#Praktikumsgruppe;010
+#Messbeginn;20211209-115826
+#Mess-Variante;Messung mit Photomultiplier
+#
+#Doppelspalt
 #;Spaltposition;Impulsrate / 1/s
 0.000;0.300;0.000
 1.000;0.350;0.000
