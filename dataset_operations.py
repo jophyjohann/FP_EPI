@@ -1,5 +1,5 @@
 import glob, os
-
+import numpy as np
 
 folder_name="measurements/"
 file_extension=".csv"
@@ -57,12 +57,13 @@ def insert_dataset_files():
 	file.close()
 
 def import_dataset_measurements():
-	dataSet=len(dataset_files)*[]
+	dataSet = [None] * len(dataset_files)
 	for i in range(len(dataset_files)):
 		dataSet[i] = {
         'name': dataset_files[i],
-				'n': np.loadtxt(dataset_files + file_extension, unpack=True,comment="#",usecols=(0)),
-        'x': np.loadtxt(dataset_files + file_extension, unpack=True,comment="#",usecols=(1)),
-        'y': np.loadtxt(dataset_files + file_extension, unpack=True,comment="#",usecols=(2)),
+				'n': np.loadtxt(folder_name + dataset_files[i], unpack=True, comments="#", usecols=(0), delimiter=";"),
+        'x': np.loadtxt(folder_name + dataset_files[i], unpack=True, comments="#", usecols=(1), delimiter=";"),
+        'y': np.loadtxt(folder_name + dataset_files[i], unpack=True, comments="#", usecols=(2), delimiter=";"),
     		}
 	
+print(import_dataset_measurements().dataSet)

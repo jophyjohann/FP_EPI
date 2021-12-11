@@ -6,8 +6,8 @@ def init():
 
 def main():
 	init()
-
-	print(dataSet)
+	import_dataset_measurements()
+	print()
 
 	pass
 
