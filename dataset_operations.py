@@ -21,7 +21,6 @@ class DataSet_Operations:
 										 "EPI_010_20211209-140834_DS_Lampe_linker_Spalt_offen_20211209-132953.csv",
 										 "EPI_010_20211209-143459_DS_Lampe_beide_offen_20211209-141521.csv",
 										 "EPI_010_20211209-145858_DS_Lampe_rechter_Spalt_offen_20211209-143658.csv",
-										 "test.csv",
 										 ]
 		#end of automatically inserted dataset_files
 

@@ -1,5 +1,6 @@
 from dataset_operations import DataSet_Operations
 import script1
+import script2
 
 class run:
 	def __init__(self):
@@ -9,11 +10,9 @@ class run:
 		self.dat.datasets_change_comma_to_dot()
 
 	def main(self):
-		print("läuft")
 		self.__init__()
 		self.dat.import_dataset_measurements()
 		#print(self.dat.dataSet)
 		
 run=run()
-
 run.main()
