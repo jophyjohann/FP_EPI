@@ -1,6 +1,5 @@
 from dataset_operations import DataSet_Operations
 import script1
-import script2
 
 class run:
 	def __init__(self):
