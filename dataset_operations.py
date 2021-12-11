@@ -21,6 +21,7 @@ class DataSet_Operations:
 										 "EPI_010_20211209-140834_DS_Lampe_linker_Spalt_offen_20211209-132953.csv",
 										 "EPI_010_20211209-143459_DS_Lampe_beide_offen_20211209-141521.csv",
 										 "EPI_010_20211209-145858_DS_Lampe_rechter_Spalt_offen_20211209-143658.csv",
+										 "test.csv",
 										 ]
 		#end of automatically inserted dataset_files
 
@@ -56,6 +57,7 @@ class DataSet_Operations:
 		dataset_spot=data[data.find(start_string):data.find(stop_string)] + stop_string
 		file.write(data.replace(dataset_spot, start_string + additional_string + filename_list + stop_string))
 		file.close()
+
 
 	def import_dataset_measurements(self):
 		self.dataSet = [None] * len(self.dataset_files)
