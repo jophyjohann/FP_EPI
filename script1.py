@@ -1,43 +1,40 @@
 from dataset_operations import DataSet_Operations
-
 import matplotlib.pyplot as plt
 import numpy as np
 
 class run:
-	def main(self):
+	def __init__(self):
 		self.dat = DataSet_Operations()
 		self.dat.import_dataset_measurements()
-run=run()
-run.main()		
-
-dat=run.dat
-
-dataSet=dat.dataSet
-
-print(dataSet[1]['name'])
-print(dat.dataSet[1]['n'])
-print(dat.dataSet[1]['x'])
-print(dat.dataSet[1]['y'])
 
 
+	def main(self):
+		dataSet = self.dat.dataSet
 
-fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
-plt.plot(p_1, U_1, '.', label='Untergrund Messung')
-plt.show()
+		print(80*"_"+"\n\nPlotting: ",dataSet[0]['name'])
 
-'''
-fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
-plt.plot(p_2, U_2, '.', label='Doppelspalt')
+		fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
+		plt.plot(dataSet[0]['x'], dataSet[0]['y'], '.', label='Untergrund Messung')
+		plt.title()
+		plt.show()
 
-plt.show()
 
-fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
-plt.plot(p_3, U_3, '.', label='Linker Spalt')
+		print(80*"_"+"\n\nPlotting: ",dataSet[1]['name'])
 
-plt.show()
+		fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
+		plt.plot(dataSet[1]['x'], dataSet[1]['y'], '.', label='Doppelspalt')
+		plt.show()
 
-fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
-plt.plot(p_4, U_4, '.', label='Rechter Spalt')
 
-plt.show()
-'''
+		print(80*"_"+"\n\nPlotting: ",dataSet[2]['name'])
+
+		fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
+		plt.plot(dataSet[2]['x'], dataSet[2]['y'], '.', label='Linker Spalt')
+		plt.show()
+
+
+		print(80*"_"+"\n\nPlotting: ",dataSet[3]['name'])
+
+		fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
+		plt.plot(dataSet[3]['x'], dataSet[3]['y'], '.', label='Rechter Spalt')
+		plt.show()
