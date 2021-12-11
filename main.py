@@ -36,7 +36,7 @@ class run:
 					exec("importlib.reload(script"+x[:-1]+")")
 					exec("self.s"+x[:-1]+"=script"+x[:-1]+".run()")
 					exec("self.s"+x[:-1]+".main()")
-					print(80*"_"+"\nStarting script again..")
+					print(50*"_"+"\nStarting script again..")
 			else:
 				print('Loading all..\n')
 				for i in range(run.n_scripts):
