@@ -16,6 +16,12 @@ class run:
 	def main(self):
 		dataSet = self.dat.dataSet
 		
+		def maximize():
+			'''maximizes the matplotlib plot window'''
+			mng = plt.get_current_fig_manager()
+			mng.resize(*mng.window.maxsize())
+
+
 		### Define some fitting functions
 		def func_single_slit(x, x0, L, a, Lambda, I0, U):
 			theta = (x - x0) / L
@@ -61,4 +67,5 @@ class run:
 		plt.plot(fit_x, func(fit_x,*popt), 'r--')
 		plt.title(label=data['name'][24:-20])
 		plt.savefig(self.export_folder+data['name'][24:-20]+"_Fit"+self.export_extension, bbox_inches='tight')
+		maximize()
 		plt.show()
