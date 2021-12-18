@@ -38,6 +38,7 @@ class run:
 		dataSet_No = 2
 		data = dataSet[dataSet_No]
 		name = data['name'][24:-20]
+		
 		print(50*"_"+"\n\nPlotting: ", name.replace("_"," "))
 		
 		plot_ra = [1,-2]

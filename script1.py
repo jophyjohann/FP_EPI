@@ -23,6 +23,7 @@ class run:
 
 		for data in dataSet:
 			name = data['name'][24:-20]
+
 			print(80*"_"+"\n\nPlotting: ", name.replace("_"," "))
 		
 			fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
