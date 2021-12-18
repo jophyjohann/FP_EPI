@@ -28,22 +28,17 @@ class run:
 			F = a * np.pi * theta / Lambda
 			return I0 * (np.sin(F) / F) ** 2 + U	#alternative for sinus: return I0 * ((F-(1/6)*F**3+(1/120)*F**5) / F) ** 2 + U
 
-		def func_double_slit(x, a, b):
-
-			return a*x + b
-
-
 		### Plot ... ###
 		
-		dataSet_No = 2
+		dataSet_No = 2   
 		data = dataSet[dataSet_No]
 		name = data['name'][24:-20]
 		
 		print(50*"_"+"\n\nPlotting: ", name.replace("_"," "))
 		
 		plot_ra = [1,-2]
-		fit_ra = [20,-30]
-		fit_plot_ra = [20,-30]
+		fit_ra = [25,-30]
+		fit_plot_ra = [25,-30]
 		
 		data['x'] = data['x'][plot_ra[0]:plot_ra[1]]
 		data['y'] = data['y'][plot_ra[0]:plot_ra[1]]
@@ -59,8 +54,10 @@ class run:
 		setattr(self, "popt"+str(dataSet_No), popt)
 		setattr(self, "pcov"+str(dataSet_No), pcov)
 		
-		print(popt)
-		#fit_x = np.linspace(data['x'][0], data['x'][-1], 1000)
+		print("\nFit Parameter:")
+		for param in fit_param[0]:
+			i = fit_param[0].index(param)
+			print("{} = {:.4g} ± {:.4g}".format(param,popt[i],np.sqrt(np.diag(pcov))[i]))
 		
 		fit_x = np.linspace(data['x'][fit_plot_ra[0]:fit_plot_ra[1]][0], data['x'][fit_plot_ra[0]:fit_plot_ra[1]][-1], 1000)
 		

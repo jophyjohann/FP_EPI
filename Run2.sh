@@ -1,0 +1,1 @@
+fluxbox > /dev/null 2>&1 & xdotool key ctrl+F2 & python main.py

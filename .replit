@@ -1,2 +1,2 @@
 language = "python3"
-run = "python main.py"
+run = "fluxbox > /dev/null 2>&1 & xdotool key ctrl+F1 & python main.py"
