@@ -1,18 +1,14 @@
 from dataset_operations import DataSet_Operations
 import importlib
+import glob
 
-'''
-for i in range(1,3):
-			exec("import script"+str(i))
-			#exec("self.s"+str(i)+"=script"+str(i)+".run()")
-'''
 
 class run:
 
 	def __init__(self):
 		self.dat = DataSet_Operations()
 
-		self.n_scripts = 2
+		self.n_scripts = len(glob.glob("script*.py"))
 		
 		for i in range(1,self.n_scripts+1):
 			exec("import script"+str(i))

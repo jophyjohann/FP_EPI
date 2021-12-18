@@ -31,11 +31,11 @@ class run:
 		
 		dataSet_No = 2
 		data = dataSet[dataSet_No]
-		print(50*"_"+"\n\nPlotting: ",data['name'])
+		print(50*"_"+"\n\nPlotting: ",data['name'][24:-20])
 		
 		plot_ra = [1,-2]
-		fit_ra = [0,None]
-		fit_plot_ra = [0,None]
+		fit_ra = [20,-30]
+		fit_plot_ra = [20,-30]
 		
 		data['x'] = data['x'][plot_ra[0]:plot_ra[1]]
 		data['y'] = data['y'][plot_ra[0]:plot_ra[1]]
@@ -46,13 +46,15 @@ class run:
 									[3.3, 200, 1e4,     500,  0.1,   0]]		# min values
 
 		func = func_single_slit
-		popt, pcov = curve_fit(func, data['x'][fit_ra[0]:fit_ra[1]], data['y'][fit_ra[0]:fit_ra[1]], fit_param[2])#, bounds=(fit_param[3],fit_param[1]))
+		popt, pcov = curve_fit(func, data['x'][fit_ra[0]:fit_ra[1]], data['y'][fit_ra[0]:fit_ra[1]])#, fit_param[2])#, bounds=(fit_param[3],fit_param[1]))
 
 		setattr(self, "popt"+str(dataSet_No), popt)
 		setattr(self, "pcov"+str(dataSet_No), pcov)
 		
 		print(popt)
-		fit_x = np.linspace(data['x'][0], data['x'][-1], 1000)
+		#fit_x = np.linspace(data['x'][0], data['x'][-1], 1000)
+		
+		fit_x = np.linspace(data['x'][fit_plot_ra[0]:fit_plot_ra[1]][0], data['x'][fit_plot_ra[0]:fit_plot_ra[1]][-1], 1000)
 		
 		fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
 		plt.plot(data['x'], data['y'], '.')
