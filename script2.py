@@ -9,7 +9,7 @@ class run:
 		self.dat = DataSet_Operations()
 		self.dat.import_dataset_measurements()
 
-		self.export_folder = "export_script2/"
+		self.export_folder = "export_" + __name__ + "/"
 		self.export_extension = ".pdf"
 
 
@@ -37,7 +37,8 @@ class run:
 		
 		dataSet_No = 2
 		data = dataSet[dataSet_No]
-		print(50*"_"+"\n\nPlotting: ",data['name'][24:-20])
+		name = data['name'][24:-20]
+		print(50*"_"+"\n\nPlotting: ", name.replace("_"," "))
 		
 		plot_ra = [1,-2]
 		fit_ra = [20,-30]
@@ -65,7 +66,7 @@ class run:
 		fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
 		plt.plot(data['x'], data['y'], '.')
 		plt.plot(fit_x, func(fit_x,*popt), 'r--')
-		plt.title(label=data['name'][24:-20])
-		plt.savefig(self.export_folder+data['name'][24:-20]+"_Fit"+self.export_extension, bbox_inches='tight')
+		plt.title(label=name.replace("_"," "))
+		plt.savefig(self.export_folder + name + "_Fit" + self.export_extension, bbox_inches='tight')
 		maximize()
 		plt.show()

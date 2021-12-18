@@ -9,11 +9,11 @@ class run:
 		self.dat = DataSet_Operations()
 		self.dat.import_dataset_measurements()
 
-		self.export_folder = "export_script2/"
+		self.export_folder = "export_" + __name__ + "/"
 		self.export_extension = ".pdf"
 
 
 	def main(self):
 		dataSet = self.dat.dataSet
 		
-		print("script3.py is running!")
+		print( __name__ + ".py is running!")
