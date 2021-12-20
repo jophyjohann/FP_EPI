@@ -26,8 +26,8 @@ class run:
 		def func_single_slit(x, x0, L, a, Lambda, I0, U):
 			theta = (x - x0) / L
 			F = a * np.pi * theta / Lambda
-			return I0 * (np.sin(F) / F) ** 2 + U	#alternative for sinus: return I0 * ((F-(1/6)*F**3+(1/120)*F**5) / F) ** 2 + U
-
+			return I0 * (np.sin(F) / F) ** 2 + U
+		
 		### Plot ... ###
 		
 		dataSet_No = 2   
@@ -37,19 +37,20 @@ class run:
 		print(50*"_"+"\n\nPlotting: ", name.replace("_"," "))
 		
 		plot_ra = [1,-2]
-		fit_ra = [25,-30]
-		fit_plot_ra = [25,-30]
+		fit_ra = [None,None]
+		fit_plot_ra = [None,None]
 		
 		data['x'] = data['x'][plot_ra[0]:plot_ra[1]]
 		data['y'] = data['y'][plot_ra[0]:plot_ra[1]]
 		
-		fit_param = [["x0", "L", "a","Lambda", "I0", "U"],
-									[4.2, 700, 1e5,     600,    1, 0.5],		# max values
-									[3.8, 400, 6e4,     546, 0.41, 0.1],		# start values
-									[3.3, 200, 1e4,     500,  0.1,   0]]		# min values
-
+		
+		fit_param = [["x₀" ,"L ","a " ,    "λ ","I₀","U "],
+									[5.0 , 550, 0.1 , 671e-6, 1   , 0.5],		# max values
+									[4.29, 500, 0.09, 670e-6, 0.41, 0.1],		# start values
+									[3.5 , 450, 0.08, 669e-6, 0.1 ,   0]]		# min values
+		
 		func = func_single_slit
-		popt, pcov = curve_fit(func, data['x'][fit_ra[0]:fit_ra[1]], data['y'][fit_ra[0]:fit_ra[1]])#, fit_param[2])#, bounds=(fit_param[3],fit_param[1]))
+		popt, pcov = curve_fit(func, data['x'][fit_ra[0]:fit_ra[1]], data['y'][fit_ra[0]:fit_ra[1]], fit_param[2], bounds=(fit_param[3],fit_param[1]))
 
 		setattr(self, "popt"+str(dataSet_No), popt)
 		setattr(self, "pcov"+str(dataSet_No), pcov)
