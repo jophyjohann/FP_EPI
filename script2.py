@@ -78,6 +78,7 @@ class run:
 		plt.plot(data['x'], data['y'], '.')
 		plt.plot(fit_x, func(fit_x,*popt), 'r--')
 		plt.title(label=name.replace("_"," "))
+		plt.ylim(0, 0.5)
 		plt.savefig(self.export_folder + name + "_Fit" + self.export_extension, bbox_inches='tight')
 		maximize()
 		plt.show()

@@ -32,23 +32,23 @@ class run:
 
 	### Plot ... ###
 		
-		dataSet_No = 10 # Nur linker Spalt Lampe
+		dataSet_No = 10 # Nur rechter Spalt Lampe
 		data = dataSet[dataSet_No]
 		name = data['name'][24:-20]
 		
 		print(50*"_"+"\n\nPlotting: ", name.replace("_"," "))
 		
 		plot_ra = [1,-2]
-		fit_ra = [30,-10]
-		fit_plot_ra = [30,-10]
+		fit_ra = [None,-15]
+		fit_plot_ra = [None,-15]
 		
 		data['x'] = data['x'][plot_ra[0]:plot_ra[1]]
 		data['y'] = data['y'][plot_ra[0]:plot_ra[1]]
 		
 		fit_param = [["x₀" , "a " ,"I₀","U "],
-									[ 5.5,   0.5, 630,  20],		# max values
-									[4.29,  0.07, 600, 0.1],		# start values
-									[3.5 , 0.001, 570,   0]]		# min values
+									[ 5.5,   0.5, 610,  50],		# max values
+									[4.29,  0.07, 300, 0.1],		# start values
+									[3.5 , 0.001, 270,   0]]		# min values
 		
 		func = func_single_slit
 		popt, pcov = curve_fit(func, data['x'][fit_ra[0]:fit_ra[1]], data['y'][fit_ra[0]:fit_ra[1]], fit_param[2], bounds=(fit_param[3],fit_param[1]))
@@ -67,6 +67,8 @@ class run:
 		plt.plot(data['x'], data['y'], '.')
 		plt.plot(fit_x, func(fit_x,*popt), 'r--')
 		plt.title(label=name.replace("_"," "))
+		plt.xlim(0, 8.5)
+		plt.ylim(0, 610)
 		plt.savefig(self.export_folder + name + "_Fit" + self.export_extension, bbox_inches='tight')
 		maximize()
 		plt.show()
