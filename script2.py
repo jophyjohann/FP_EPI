@@ -23,7 +23,14 @@ class run:
 
 
 		### Define some fitting functions
-		def func_single_slit(x, x0, L, a, Lambda, I0, U):
+		def func_single_slit_original(x, x0, L, a, Lambda, I0, U):
+			theta = (x - x0) / L
+			F = a * np.pi * theta / Lambda
+			return I0 * (np.sin(F) / F) ** 2 + U
+		
+		def func_single_slit(x, x0, a, I0, U):
+			Lambda = 670e-6
+			L = 500
 			theta = (x - x0) / L
 			F = a * np.pi * theta / Lambda
 			return I0 * (np.sin(F) / F) ** 2 + U
@@ -44,10 +51,15 @@ class run:
 		data['y'] = data['y'][plot_ra[0]:plot_ra[1]]
 		
 		
-		fit_param = [["x₀" ,"L ","a " ,    "λ ","I₀","U "],
+		fit_param_original = [["x₀" ,"L ","a " ,    "λ ","I₀","U "],
 									[5.0 , 550, 0.1 , 671e-6, 1   , 0.5],		# max values
 									[4.29, 500, 0.09, 670e-6, 0.41, 0.1],		# start values
 									[3.5 , 450, 0.08, 669e-6, 0.1 ,   0]]		# min values
+		
+		fit_param = [["x₀" ,"a " , "I₀","U "],
+									[5.0 , 0.1 , 1   , 0.5],		# max values
+									[4.29, 0.09, 0.41, 0.1],		# start values
+									[3.5 , 0.08, 0.1 ,   0]]		# min values
 		
 		func = func_single_slit
 		popt, pcov = curve_fit(func, data['x'][fit_ra[0]:fit_ra[1]], data['y'][fit_ra[0]:fit_ra[1]], fit_param[2], bounds=(fit_param[3],fit_param[1]))
