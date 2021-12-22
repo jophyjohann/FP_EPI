@@ -27,7 +27,7 @@ class run:
 		
 		print(50*"_"+"\n\nPlotting: ", name1.replace("_"," "))
 
-		dataSet_No = 9 # Hellmessung  PM
+		dataSet_No = 5 # Hellmessung  PM
 		data2 = dataSet[dataSet_No]
 		name2 = data2['name'][24:-20]
 		
@@ -35,9 +35,9 @@ class run:
 
 		plt.plot(data1['x'], data1['y'], '-', label='name1')
 		plt.plot(data2['x'], data2['y'], '-', label='name2')
-		plt.plot.vlines(0.55, 0, 1500, 'r--')
-		plt.title(label=name.replace("_"," "))
-		plt.ylim(0, 1500)
-		plt.savefig(self.export_folder + name + "_Fit" + self.export_extension, bbox_inches='tight')
+		plt.plot([0.55, 0.55], [0, 1500], 'r--')
+		plt.title(label=name1.replace("_"," "))
+		plt.ylim(0, 1400)
+		plt.savefig(self.export_folder + name1 + "_Fit" + self.export_extension, bbox_inches='tight')
 		maximize()
 		plt.show()
