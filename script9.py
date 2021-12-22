@@ -21,15 +21,18 @@ class run:
 			mng = plt.get_current_fig_manager()
 			mng.resize(*mng.window.maxsize())
     
-		dataSet_No = 4  # Dunkelmessung PM
+		dataSet_No = 0  # 
 		data = dataSet[dataSet_No]
 		name = data['name'][24:-20]
+		x = np.linspace(0, 40, num=41)
+		print(x)
 		
 		print(50*"_"+"\n\nPlotting: ", name.replace("_"," "))
 
-		plt.plot(data['x'], data['y'], '-', label='name1')
+		plt.plot(x, data['y'], '.', label='name1')
+		plt.xlabel('Messungs Nummer')
+		plt.ylabel('Diodenspannung')
 		plt.title(label=name.replace("_"," "))
-		plt.ylim(0, 1400)
 		plt.savefig(self.export_folder + 'name123' + self.export_extension, bbox_inches='tight')
 		maximize()
 		plt.show()
