@@ -28,7 +28,6 @@ class run:
 		print(50*"_"+"\n\nPlotting: ", name.replace("_"," "))
 
 		plt.plot(data['x'], data['y'], '-', label='name1')
-		plt.plot([0.55, 0.55], [0, 1500], 'r--')
 		plt.title(label=name.replace("_"," "))
 		plt.ylim(0, 1400)
 		plt.savefig(self.export_folder + 'name123' + self.export_extension, bbox_inches='tight')
