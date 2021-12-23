@@ -23,6 +23,7 @@ class run:
     
 		dataSet_No = 0  # 
 		data = dataSet[dataSet_No]
+		export_name = data['name'][24:-20]
 		name = data['name'][24:-20]
 		x = np.linspace(0, 40, num=41)
 		
@@ -32,6 +33,6 @@ class run:
 		plt.xlabel('Messungs Nummer')
 		plt.ylabel('Diodenspannung U/V')
 		plt.title(label=name.replace("_"," "))
-		plt.savefig(self.export_folder + 'name123' + self.export_extension, bbox_inches='tight')
+		plt.savefig(self.export_folder + export_name + self.export_extension, bbox_inches='tight')
 		maximize()
 		plt.show()
