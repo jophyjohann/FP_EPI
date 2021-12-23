@@ -31,8 +31,8 @@ class run:
 
 		fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
 		plt.plot(x, data['y'], '.', label='name1')
-		plt.xlabel('Messungs Nummer')
-		plt.ylabel('Diodenspannung U/V')
+		plt.xlabel('Messwert Nr')
+		plt.ylabel('Diodenspannung U / V')
 		plt.title(label=name.replace("_"," "))
 		plt.savefig(self.export_folder + export_name + self.export_extension, bbox_inches='tight')
 		maximize()
