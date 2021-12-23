@@ -21,11 +21,22 @@ class run:
 			mng = plt.get_current_fig_manager()
 			mng.resize(*mng.window.maxsize())
 
+		#define uncertainty of given L and Lambda
+		delta_L = 50
+		delta_Lambda = 20e-6
+		
+		#define mean values of Lambda and L:
+		L = 500
+		Lambda = 670e-6
+
+		Lambda_values = [Lambda - delta_Lambda, Lambda, Lambda + delta_Lambda]
+		L_values = [L - delta_L, L, L + delta_L]
+
+		Lambda = Lambda_values[1]
+		L = L_values[1]
 
 		### Define some fitting functions
 		def func_single_slit(x, x0, a, I0, U):
-			Lambda = 670e-6
-			L = 500
 			theta = (x - x0) / L
 			F = a * np.pi * theta / Lambda
 			return I0 * (np.sin(F) / F) ** 2 + U
@@ -52,21 +63,31 @@ class run:
 									[4.0 ,0.001, 0.1,   0]]		# min values
 		
 		func = func_single_slit
-		popt, pcov = curve_fit(func, data['x'][fit_ra[0]:fit_ra[1]], data['y'][fit_ra[0]:fit_ra[1]], fit_param[2], bounds=(fit_param[3],fit_param[1]))
-
+		
+		popt = 3 * [None]
+		pcov = 3 * [None]
+		for i in range(0,3):
+			Lambda = Lambda_values[i]
+			L = L_values[i]
+			popt[i], pcov[i] = curve_fit(func, data['x'][fit_ra[0]:fit_ra[1]], data['y'][fit_ra[0]:fit_ra[1]], fit_param[2], bounds=(fit_param[3],fit_param[1]))
+		
 		setattr(self, "popt"+str(dataSet_No), popt)
 		setattr(self, "pcov"+str(dataSet_No), pcov)
 		
 		print("\nFit Parameter:")
+		print("Param.  Wert    Δ(Fit)      Δ(λ,L)       -> Param(min...max)")
 		for param in fit_param[0]:
 			i = fit_param[0].index(param)
-			print("{} = {:.4g} ± {:.4g}".format(param,popt[i],np.sqrt(np.diag(pcov))[i]))
+			print("{} = {:.5}  \t±{:.4} \t[±{:.4}]  \t({:.4}...{:.4f})".format(param,popt[1][i],np.sqrt(np.diag(pcov[1]))[i],np.abs(popt[2][i] - popt[0][i]) + np.sqrt(np.diag(pcov[0]))[i] + np.sqrt(np.diag(pcov[2]))[i],min(popt[0][i],popt[2][i]) - np.sqrt(np.diag(pcov[0]))[i], max(popt[0][i],popt[2][i]) + np.sqrt(np.diag(pcov[2]))[i]))
 		
-		fit_x = np.linspace(data['x'][fit_plot_ra[0]:fit_plot_ra[1]][0], data['x'][fit_plot_ra[0]:fit_plot_ra[1]][-1], 1000) # what does this do?..creates a linespace for the plotting of the fit, with 100 steps instead of the steps of the measurement points
+		Lambda = Lambda_values[1]
+		L = L_values[1]
+
+		fit_x = np.linspace(data['x'][fit_plot_ra[0]:fit_plot_ra[1]][0], data['x'][fit_plot_ra[0]:fit_plot_ra[1]][-1], 1000)
 		
 		fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
 		plt.plot(data['x'], data['y'], '.')
-		plt.plot(fit_x, func(fit_x,*popt), 'r--')
+		plt.plot(fit_x, func(fit_x,*popt[1]), 'r--')
 		plt.xlabel('Detektorspaltposition x / mm')
 		plt.ylabel('Diodenspannung U / V')
 		plt.title(label=name.replace("_"," "))

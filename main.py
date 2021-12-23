@@ -10,12 +10,6 @@ class run:
 
 		self.n_scripts = len(glob.glob("script*.py"))
 		
-		'''
-		for i in range(1,self.n_scripts+1):
-			exec("import script"+str(i))
-			exec("self.s"+str(i)+"=script"+str(i)+".run()")
-		'''
-		
 		self.dat.insert_dataset_files()
 		self.dat.datasets_change_comma_to_dot()
 

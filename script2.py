@@ -71,7 +71,6 @@ class run:
 			L = L_values[i]
 			popt[i], pcov[i] = curve_fit(func, data['x'][fit_ra[0]:fit_ra[1]], data['y'][fit_ra[0]:fit_ra[1]], fit_param[2], bounds=(fit_param[3],fit_param[1]))
 		
-
 		setattr(self, "popt"+str(dataSet_No), popt)
 		setattr(self, "pcov"+str(dataSet_No), pcov)
 		
