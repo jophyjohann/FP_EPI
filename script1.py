@@ -26,13 +26,14 @@ class run:
 
 		for data in dataSet:
 			export_name = data['name'][24:-20]
-			name = "dataSet[" + str(dataSet.index(data)) + "]\n" + export_name
+			name = ("dataSet[" + str(dataSet.index(data)) + "]\n" + export_name).replace("_"," ")
+			title_name=export_name.replace("_"," ")
 
 			print(80*"_"+"\n\nPlotting: ", name)
 		
 			fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
 			plt.plot(data['x'], data['y'], '.')
-			plt.title(label=name)
+			plt.title(label=title_name)
 			plt.savefig(self.export_folder + export_name + self.export_extension, bbox_inches='tight')
 			maximize()
 			plt.show()

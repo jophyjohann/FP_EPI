@@ -12,9 +12,14 @@ class run:
 		self.export_folder = "export_" + __name__ + "/"
 		self.export_extension = ".pdf"
 
+		self.popt = None
+		self.pcov = None
+
 
 	def main(self):
 		dataSet = self.dat.dataSet
+		popt = self.popt
+		pcov = self.pcov
 		
 		def maximize():
 			'''maximizes the matplotlib plot window'''
@@ -70,9 +75,6 @@ class run:
 			Lambda = Lambda_values[i]
 			L = L_values[i]
 			popt[i], pcov[i] = curve_fit(func, data['x'][fit_ra[0]:fit_ra[1]], data['y'][fit_ra[0]:fit_ra[1]], fit_param[2], bounds=(fit_param[3],fit_param[1]))
-		
-		setattr(self, "popt"+str(dataSet_No), popt)
-		setattr(self, "pcov"+str(dataSet_No), pcov)
 		
 		print("\nFit Parameter:")
 		print("Param.  Wert    Δ(Fit)      Δ(λ,L)       -> Param(min...max)")
