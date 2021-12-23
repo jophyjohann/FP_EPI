@@ -40,7 +40,7 @@ class run:
 		plt.xlabel('Spannung U / kV')
 		plt.ylabel('Impulsrate 1 / s')
 		plt.title('Bestimmung der Arbeitsspannung')
-		plt.xlim(0, 0.70)
+		plt.xlim(0.0, 0.70)
 		plt.ylim(0, 1400)
 		plt.legend()
 		plt.savefig(self.export_folder + 'Arbeitsspannung' + self.export_extension, bbox_inches='tight')
