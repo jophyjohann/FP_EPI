@@ -31,7 +31,7 @@ class run:
 
 		plt.plot(x, data['y'], '.', label='name1')
 		plt.xlabel('Messungs Nummer')
-		plt.ylabel('Diodenspannung')
+		plt.ylabel('Diodenspannung U/V')
 		plt.title(label=name.replace("_"," "))
 		plt.savefig(self.export_folder + 'name123' + self.export_extension, bbox_inches='tight')
 		maximize()
