@@ -23,11 +23,11 @@ class run:
 
 		#define uncertainty of given L and Lambda
 		delta_L = 50
-		delta_Lambda = 20e-6
+		delta_Lambda = 5e-6
 		
 		#define mean values of Lambda and L:
 		L = 500
-		Lambda = 670e-6
+		Lambda = 546e-6
 
 		Lambda_values = [Lambda - delta_Lambda, Lambda, Lambda + delta_Lambda]
 		L_values = [L - delta_L, L, L + delta_L]
