@@ -39,8 +39,8 @@ class run:
 		print(50*"_"+"\n\nPlotting: ", name.replace("_"," "))
 		
 		plot_ra = [1,-2]
-		fit_ra = [None,-15]
-		fit_plot_ra = [None,-15]
+		fit_ra = [5,-25]
+		fit_plot_ra = [5,-25]
 		
 		data['x'] = data['x'][plot_ra[0]:plot_ra[1]]
 		data['y'] = data['y'][plot_ra[0]:plot_ra[1]]

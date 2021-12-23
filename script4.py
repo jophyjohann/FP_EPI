@@ -23,12 +23,6 @@ class run:
 
 
 		### Define some fitting functions
-		def func_double_slit_original(x, x0, L, a, d, Lambda, I0, U):
-			theta = (x - x0) / L
-			F = a * np.pi * theta / Lambda
-			G = d * np.pi * theta / Lambda
-			return I0 * np.cos(G) ** 2 * (np.sin(F) / F) ** 2 + U
-		
 		def func_double_slit(x, x0, a, d, I0, U):
 			Lambda = 670e-6
 			L = 500
@@ -40,7 +34,7 @@ class run:
       
 		### Plot ... ###
 		
-		dataSet_No = 1 # Nur rechter Spalt
+		dataSet_No = 1 # Laser Doppelspalt
 		data = dataSet[dataSet_No]
 		name = data['name'][24:-20]
 		
@@ -52,11 +46,6 @@ class run:
 		
 		data['x'] = data['x'][plot_ra[0]:plot_ra[1]]
 		data['y'] = data['y'][plot_ra[0]:plot_ra[1]]
-		
-		fit_param_original = [["x₀" ,"L ","a " ,"d ",     "λ ","I₀","U "],
-									[5.0 , 550,  0.5, 2  , 670.1e-6,   2, 0.5],		# max values
-									[4.29, 500, 0.07, 0.5,   670e-6, 1.4, 0.1],		# start values
-									[4.0 , 450,0.001, 0.1, 669.9e-6,   1,   0]]		# min values
 		
 		fit_param = [["x₀" ,"a " ,"d ", "I₀","U "],
 									[5.0 ,  0.5, 2  ,   2, 0.5],		# max values

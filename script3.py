@@ -30,11 +30,6 @@ class run:
 			F = a * np.pi * theta / Lambda
 			return I0 * (np.sin(F) / F) ** 2 + U
 		
-		def func_single_slit_original(x, x0, L, a, Lambda, I0, U):
-			theta = (x - x0) / L
-			F = a * np.pi * theta / Lambda
-			return I0 * (np.sin(F) / F) ** 2 + U
-		
       
 		### Plot ... ###
 		
@@ -45,16 +40,11 @@ class run:
 		print(50*"_"+"\n\nPlotting: ", name.replace("_"," "))
 		
 		plot_ra = [1,-2]
-		fit_ra = [None,None]
-		fit_plot_ra = [None,None]
+		fit_ra = [15,None]
+		fit_plot_ra = [15,None]
 		
 		data['x'] = data['x'][plot_ra[0]:plot_ra[1]]
 		data['y'] = data['y'][plot_ra[0]:plot_ra[1]]
-		
-		fit_param_original = [["x₀" ,"L ","a " ,     "λ ", "I₀","U "],
-									[5.0 , 550,  0.5, 670.1e-6,    1, 0.5],		# max values
-									[4.29, 500, 0.07,   670e-6, 0.41, 0.1],		# start values
-									[4.0 , 450,0.001, 669.9e-6,  0.1,   0]]		# min values
 		
 		fit_param = [["x₀" ,"a " ,"I₀","U "],
 									[5.0 ,  0.5,   1, 0.5],		# max values
