@@ -33,6 +33,7 @@ class run:
 		
 		print(50*"_"+"\n\nPlotting: ", name2.replace("_"," "))
 
+		fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
 		plt.plot(data1['x'], data1['y'], '-', label='Dunkelmessung')
 		plt.plot(data2['x'], data2['y'], '-', label='Hellmessung')
 		plt.plot([0.55, 0.55], [0, 1500], 'r--', label='Arbeitsspannung')

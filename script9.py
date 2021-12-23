@@ -29,6 +29,7 @@ class run:
 		
 		print(50*"_"+"\n\nPlotting: ", name.replace("_"," "))
 
+		fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
 		plt.plot(x, data['y'], '.', label='name1')
 		plt.xlabel('Messungs Nummer')
 		plt.ylabel('Diodenspannung U/V')
