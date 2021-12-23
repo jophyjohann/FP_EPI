@@ -77,7 +77,7 @@ class run:
 		fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
 		plt.plot(data['x'], data['y'], '.')
 		plt.plot(fit_x, func(fit_x,*popt), 'r--')
-		plt.xlabel('Spaltposition x / mm')
+		plt.xlabel('Detektorspaltposition x / mm')
 		plt.ylabel('Diodenspannung U / V')
 		plt.title(label=name.replace("_"," "))
 		plt.ylim(0, 0.45)

@@ -66,7 +66,7 @@ class run:
 		fig = plt.figure(figsize=(8, 4), dpi=120).add_subplot(1, 1, 1)
 		plt.plot(data['x'], data['y'], '.')
 		plt.plot(fit_x, func(fit_x,*popt), 'r--')
-		plt.xlabel('Spaltposition x / mm')
+		plt.xlabel('Detektorspaltposition x / mm')
 		plt.ylabel('Impulsrate 1 / s')
 		plt.title(label=name.replace("_"," "))
 		plt.xlim(0, 8.75)
