@@ -25,7 +25,6 @@ class run:
 		data = dataSet[dataSet_No]
 		name = data['name'][24:-20]
 		x = np.linspace(0, 40, num=41)
-		print(x)
 		
 		print(50*"_"+"\n\nPlotting: ", name.replace("_"," "))
 

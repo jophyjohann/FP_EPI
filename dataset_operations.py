@@ -10,17 +10,17 @@ class DataSet_Operations:
 		self.working_path = os.getcwd()
 
 		#automatically inserted dataset_files:
-		self.dataset_files = ["EPI_010_20211209-104606_DS_Laser_Untergrund_20211209-104502.csv",
-										 "EPI_010_20211209-111211_DS_Laser_beide_offen_20211209-110611.csv",
-										 "EPI_010_20211209-112504_DS_Laser_linker_Spalt_offen_20211209-112029.csv",
-										 "EPI_010_20211209-113144_DS_Laser_rechter_Spalt_offen_20211209-112624.csv",
-										 "EPI_010_20211209-120351_DS_Lampe_Kalibrierung_closed_shutter_20211209-115826.csv",
-										 "EPI_010_20211209-121129_DS_Lampe_Kalibrierung_opened_shutter_20211209-120507.csv",
-										 "EPI_010_20211209-122000_DS_Lampe_Kalibrierung_zaehlrate_bei_arbeitsspannung_closed_shutter_20211209-121701.csv",
-										 "EPI_010_20211209-123020_DS_Lampe_Kalibrierung_zaehlrate_bei_arbeitsspannung_opened_shutter_20211209-122225.csv",
-										 "EPI_010_20211209-140834_DS_Lampe_linker_Spalt_offen_20211209-132953.csv",
-										 "EPI_010_20211209-143459_DS_Lampe_beide_offen_20211209-141521.csv",
-										 "EPI_010_20211209-145858_DS_Lampe_rechter_Spalt_offen_20211209-143658.csv",
+		self.dataset_files = ["EPI_010_20211209-104606_Laser_Untergrund_20211209-104502.csv",
+										 "EPI_010_20211209-111211_Laser_beide_offen_20211209-110611.csv",
+										 "EPI_010_20211209-112504_Laser_linker_Spalt_offen_20211209-112029.csv",
+										 "EPI_010_20211209-113144_Laser_rechter_Spalt_offen_20211209-112624.csv",
+										 "EPI_010_20211209-120351_Lampe_Kalibrierung_closed_shutter_20211209-115826.csv",
+										 "EPI_010_20211209-121129_Lampe_Kalibrierung_opened_shutter_20211209-120507.csv",
+										 "EPI_010_20211209-122000_Lampe_Kalibrierung_arbeitsspannung_closed_shut_20211209-121701.csv",
+										 "EPI_010_20211209-123020_Lampe_Kalibrierung_arbeitsspannung_opened_shut_20211209-122225.csv",
+										 "EPI_010_20211209-140834_Lampe_linker_Spalt_offen_20211209-132953.csv",
+										 "EPI_010_20211209-143459_Lampe_beide_offen_20211209-141521.csv",
+										 "EPI_010_20211209-145858_Lampe_rechter_Spalt_offen_20211209-143658.csv",
 										 ]
 		#end of automatically inserted dataset_files
 
